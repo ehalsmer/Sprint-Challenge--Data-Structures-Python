@@ -51,3 +51,7 @@ class LinkedList:
       temp = node.next_node
       # set next to previous
       node.next_node = previous
+      # step forward with node and previous:
+      previous = node
+      self.head = node
+      node = temp
