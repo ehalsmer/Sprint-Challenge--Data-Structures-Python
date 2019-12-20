@@ -21,8 +21,7 @@ class RingBuffer:
             # remove head, add to tail, point new tail at new head (head has been overwritten by new tail)
             self.storage.remove_from_head()
             self.storage.add_to_tail(item)
-            self.storage.tail.next = self.storage.head.next
-            # self.size += 1
+            self.storage.tail.next = self.storage.head
 
     def get(self):
         # Note:  This is the only [] allowed
@@ -38,14 +37,19 @@ class RingBuffer:
         return list_buffer_contents
 
 
-# myrb = RingBuffer(5)
-# myrb.append('a')
-# myrb.append('b')
-# myrb.append('c')
-# myrb.append('d')
-# myrb.append('e')
-# myrb.append('f')
-# print(myrb.get())
+myrb = RingBuffer(5)
+myrb.append('a')
+myrb.append('b')
+myrb.append('c')
+myrb.append('d')
+myrb.append('e')
+myrb.append('f')
+print(myrb.get())
+myrb.append('g')
+print(myrb.get())
+print(myrb.storage.tail.value, myrb.storage.tail.next.value)
+
+
 
 
 
