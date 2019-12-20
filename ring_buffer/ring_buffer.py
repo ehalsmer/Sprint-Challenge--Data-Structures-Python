@@ -6,9 +6,13 @@ class RingBuffer:
         self.capacity = capacity
         self.current = None
         self.storage = DoublyLinkedList()
+        self.size = 0
 
     def append(self, item):
-        pass
+        # Check if size is equal to capacity
+            # If so, throw error and return
+        self.storage.add_to_tail(item)
+        self.storage.tail.next = self.storage.head
 
     def get(self):
         # Note:  This is the only [] allowed
