@@ -10,9 +10,15 @@ class RingBuffer:
 
     def append(self, item):
         # Check if size is equal to capacity
-            # If so, throw error and return
-        self.storage.add_to_tail(item)
-        self.storage.tail.next = self.storage.head
+        if self.size < self.capacity:
+            self.storage.add_to_tail(item)
+            # point new tail at head
+            self.storage.tail.next = self.storage.head
+        else:
+            # remove head, add to tail, point new tail at new head (head has been overwritten by new tail)
+            self.storage.remove_from_head
+            self.storage.add_to_tail(item)
+            self.storage.tail.next = self.storage.head
 
     def get(self):
         # Note:  This is the only [] allowed
