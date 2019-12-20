@@ -16,12 +16,14 @@ class RingBuffer:
             # point new tail at head
             self.storage.tail.next = self.storage.head
             self.size += 1
+            self.current = self.storage.head
         else:
-            print('in else')
             # remove head, add to tail, point new tail at new head (head has been overwritten by new tail)
             self.storage.remove_from_head()
             self.storage.add_to_tail(item)
             self.storage.tail.next = self.storage.head
+            self.storage.head.prev = self.storage.tail
+            # self.current = self.current.prev
 
     def get(self):
         # Note:  This is the only [] allowed
